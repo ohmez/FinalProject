@@ -1,0 +1,123 @@
+<section id="header">
+    <header>
+        <span class="image avatar"><img src="http://ddragon.leagueoflegends.com/cdn/8.24.1/img/profileicon/{{profileIconId}}.png" alt="" /></span>
+        <h1 id="logo">{{this.name}}</h1>
+        <p>Level: {{this.summonerLevel}}</p>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li><a href="#one" class="active">Summoner Details</a></li>
+            <li><a href="#two">Highest Mastery Champions</a></li>
+            <li><a href="#three">Recent Matches</a></li>
+            <li><a href="/">Summoner Search</a></li>
+        </ul>
+    </nav>
+    <footer>
+        <ul class="icons">
+            <li><a href="https://github.com/ohmez/projectrito" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="mailto:kkid_92@hotmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+    </footer>
+</section>
+
+<div id="wrapper">
+
+    <!-- Main -->
+        <div id="main">
+
+            <!-- One -->
+                <section id="one">
+                    <div class="image main" data-position="center">
+                        <img src="/images/banner.jpg" alt="" />
+                    </div>
+                    <div class="container">
+                        <header class="major">
+                            <h3>Ranked Summoner Details</h3>
+                        </header>
+                            <div class="box alt">
+                                <div class="row gtr-50 gtr-uniform" style="text-align: center;">
+                                    {{#if this.flex5.tier}}
+                                    <div class="col-4">
+                                        <span class="image fit">
+                                            <img src="/images/{{this.flex5.tier}}_Emblem.png" alt="" style="display: block; width: 90%; margin-right: auto; margin-left: auto;" />
+                                            <p>Flex 5v5 : {{this.flex5.tier}}-{{this.flex5.rank}}</p>
+                                            <p>LP: {{this.flex5.leaguePoints}}</p>
+                                            <p>Win Ratio: {{this.flex5.wr}}</p>
+                                        </span>
+                                    </div>
+                                    {{/if}}
+                                    {{#if this.solo.tier}}
+                                    <div class="col-4">
+                                        <span class="image fit">
+                                            <img src="/images/{{this.solo.tier}}_Emblem.png" alt="" style="display: block; width: 90%; margin-right: auto; margin-left: auto;"/>
+                                            <p>Solo / Duo Rank : {{this.solo.tier}}-{{this.solo.rank}} </p>
+                                            <p>LP: {{this.solo.leaguePoints}}</p> 
+                                            <p>Win Ratio: {{this.solo.wr}}</p>
+                                        </span>
+                                    </div>
+                                    {{/if}}
+                                    {{#if this.flex3.tier}}
+                                    <div class="col-4">
+                                        <span class="image fit">
+                                            <img src="/images/{{this.flex3.tier}}_Emblem.png" alt="" style="display: block; width: 90%; margin-right: auto; margin-left: auto;"/>
+                                            <p>Flex 3v3 : {{this.flex3.tier}}-{{this.flex3.rank}}</p>
+                                            <p>LP: {{this.flex3.leaguePoints}}</p>
+                                            <p>Win Ratio: {{this.flex3.wr}}</p>
+                                        </span>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        {{#if this.errMsg}}
+                        <h1 style="text-align:center">{{this.errMsg}}</h1>
+                        {{/if}}
+                        <h4 style="text-align:center">Any Win Ratio greater than 1 is a climbing WR.</h4>
+                        <h4 style="text-align:center">Currently the average Masters Win Ratio is {{this.masters.avg}}</h4>
+                    </div>
+                </section>
+
+            <!-- Two -->
+                <section id="two">
+                    <div class="container">
+                        {{#if masteries.top3}}
+                        {{>mastery/top3}}
+                        {{/if}}
+                    </div>
+                </section>
+
+            <!-- Three -->
+                <section id="three">
+                    <br>
+                    <div class="container">
+                        {{#if this.matches.first5}}
+                        {{>matches/first5}}
+                        {{/if}}
+                    </div>
+                </section>
+        </div>
+
+    <!-- Footer -->
+        <section id="footer">
+            <div class="container">
+                <ul class="copyright">
+                    <li>&copy; My Rito isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games
+                        or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are
+                        trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</li>
+                    <br>
+                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </section>
+
+
+
+
+</div>
+<!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/profile-main.js"></script>

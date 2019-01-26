@@ -1,0 +1,17 @@
+<h3>Highest Mastery Champions</h3>
+<br>
+    <div class="row">
+    {{#each masteries.top3}}
+        <div class="top3champions col-4">
+            <div class="champion-mastery">
+                <img class="mastery-image" src="http://ddragon.leagueoflegends.com/cdn/8.24.1/img/champion/{{championName}}.png" alt="">
+                <div class="mastery-image-layers">
+                    <img class="mastery-level" src="/images/mastery-frame-{{championLevel}}.png" alt="">
+                    <img class="chest-found" src="/images/border-chest.png" alt="">
+                </div>
+            </div>
+                    <br><br>
+            <p>{{championPoints}}</p>
+        </div>
+    {{/each}} 
+    </div>
