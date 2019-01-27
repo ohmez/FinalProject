@@ -14,7 +14,6 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static("public"));
 
 // Use Routes for url pathing to determine content population
 app.use(routes);

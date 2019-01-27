@@ -1,14 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import MainContainer from "./components/MainContainer";
+import homePage from "./pages/homePage";
+import NoMatch from "./pages/NoMatch";
 
-class App extends Component {
-  
-  render() {
+function App(){
     return (
-      <MainContainer />
+      <Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={homePage} />
+          {/* <Route exact path="/books" component={Books} />
+          <Route exact path="/books/:id" component={Detail} /> */}
+          <Route component={NoMatch} />
+        </Switch>
+      </div>
+    </Router>
     );
-  }
 }
+
 
 export default App;

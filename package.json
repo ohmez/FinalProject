@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "Final_Project",
   "version": "1.0.0",
-  "description": "Google Books React App",
+  "description": "Game Stats app utilizing Riot Games API",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -13,18 +13,35 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohmez/FinalProject.git"
+  },
+  "keywords": [
+    "riot",
+    "javascript",
+    "app",
+    "api"
+  ],
+  "author": "keagan cheatwood",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ohmez/FinalProject/issues"
+  },
+  "homepage": "https://github.com/ohmez/FinalProject#readme",
   "devDependencies": {
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
-    "mongoose": "^5.4.6",
-    "reactstrap": "^7.1.0",
-    "sequelize": "^4.42.0"
+    "mysql2": "^1.6.4",
+    "path": "^0.12.7",
+    "react-router-dom": "^4.3.1",
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0"
   }
 }
