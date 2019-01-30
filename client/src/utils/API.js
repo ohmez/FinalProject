@@ -10,6 +10,9 @@ export default {
   },
   addSummoner: function(name,sumInfo) {
     return axios.post("/api/summoner/"+name,sumInfo);
+  },
+  findSummoner: function(name) {
+    return axios.get("/api/find/"+name);
   }
   // search: function(query) {
   //   return axios.get(BASEURL + query + APIKEY);
