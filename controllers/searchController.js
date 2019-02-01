@@ -9,7 +9,7 @@ const champions = JSON.parse(JSON.stringify(jsonfile.data));
 
 // Defining methods for the SummonersController
 module.exports = {
-    findNew: function(req, res) {
+    findNew: (req, res) => {
         console.log('find new summoner triggered');
         request('https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+req.params.name+'?api_key='+key, (err, response, body) =>{
             if(!err && response.statusCode === 200) {
@@ -23,7 +23,8 @@ module.exports = {
                 sum.updated = new Date();
                 sum.name = sum.name.trim();
                 sum.title = '' +sum.name + '\'s rito';
-                res.json(sum);
+                // res.json(sum);
+                this.getRanked(sum);
             }
             else {
                 sum.errMsg = "Something went wrong retrieving your summoner account information";
@@ -32,7 +33,7 @@ module.exports = {
             }
         });
     },
-    getRanked: function(req,res) {
+    getRanked:(sum) => {
         console.log('get ranked triggers');
         request('https://na1.api.riotgames.com/lol/league/v4/positions/by-summoner/'+sum.id+'?api_key='+key,(err,response,body) => {
             if(!err && response.statusCode === 200) {
