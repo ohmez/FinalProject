@@ -9,12 +9,7 @@ function App(){
       <Router>
       <div>
         <Switch>
-          <Route exact path="/" >
-          <div>
-          <HomePage />
-          <script src="assets/js/home-main.js"></script>
-          </div>
-          </Route>
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/profile/:name" component={ProfilePage} />
           {/* <Route exact path="/books" component={Books} />
           <Route exact path="/books/:id" component={Detail} /> */}

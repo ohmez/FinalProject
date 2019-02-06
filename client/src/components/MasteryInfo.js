@@ -5,10 +5,10 @@ const MasteryInfo = (props) => {
   return (
     <section id="two">
         <div className="container">
+        <h3>Highest Mastery Champions</h3>
+        <br />
             {props.masteries.top3? (
                 <div class="row">
-                <h3>Highest Mastery Champions</h3>
-                <br />
                     {props.masteries.top3.map((masteries)=> (
                         <div class="top3champions col-4">
                             <div class="champion-mastery">
