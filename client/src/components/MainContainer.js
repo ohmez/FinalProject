@@ -14,18 +14,6 @@ export default class MainContainer extends React.Component {
     hPChange = newPage => this.setState({page: newPage});
     render() {
         return (
-           
-        
-                        
-        
-                        <section id="two">
-                            <div className="container">
-                                {{#if masteries.top3}}
-                                {{>mastery/top3}}
-                                {{/if}}
-                            </div>
-                        </section>
-        
                         <section id="three">
                             <br>
                             <div className="container">
