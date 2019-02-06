@@ -2,7 +2,6 @@ import React from 'react';
 
 function NavBar (props) {
     let sum = props.summoner
-    console.log(props.summoner);
     return (
         <section id="header">
         <header>

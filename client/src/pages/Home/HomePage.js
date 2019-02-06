@@ -4,7 +4,16 @@ import "./assets/css/home-main.css";
 
 
 class HomePage extends Component {
-   
+    componentDidMount () {
+        const script = document.createElement("script");
+
+        script.src = "assets/js/home-main.js";
+        script.async = true;
+
+        document.body.appendChild(script);
+    }
+    
+    // <script src="assets/js/home-main.js"></script>
     render() {
         return (
             <div style={{height: "100%"}}>
@@ -30,7 +39,6 @@ class HomePage extends Component {
                         trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</li>
                 </ul>
             </footer>
-            
         </div>
             
         );
