@@ -1,19 +1,14 @@
 import React, { Component } from "react";
-import "./assets/css/home-main.css";
-
-
 
 class HomePage extends Component {
     componentDidMount () {
+        require("./assets/css/home-main.css");
         const script = document.createElement("script");
-
         script.src = "assets/js/home-main.js";
         script.async = true;
-
         document.body.appendChild(script);
     }
     
-    // <script src="assets/js/home-main.js"></script>
     render() {
         return (
             <div style={{height: "100%"}}>
@@ -23,7 +18,7 @@ class HomePage extends Component {
                 <p>Welcome Summoner</p>
             </header>
 
-            <form id="signup-form" method="POST" action="/search">
+            <form id="signup-form" method="POST" action="/api/search">
                 <input type="text" name="summonerName" id="summonerName" placeholder="Enter Summoner Name" />
                 <input type="submit" value="Find My Rito"/>
             </form>
