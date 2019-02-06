@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import NavBar from "../components/NavBar";
-import API from "../utils/API";
-import ProfileInfo from "../components/ProfileInfo";
+import NavBar from "../../components/NavBar";
+import API from "../../utils/API";
+import ProfileInfo from "../../components/ProfileInfo";
+// import "./assets/css/profile-main.css";
 
-class profilePage extends Component {
+class ProfilePage extends Component {
     state = {
     };
     componentDidMount(){
@@ -34,4 +35,4 @@ class profilePage extends Component {
     }
 }
 
-export default profilePage;
+export default ProfilePage;

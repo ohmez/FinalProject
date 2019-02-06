@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import "./assets/css/home-main.css";
 
 
 
-class homePage extends Component {
+class HomePage extends Component {
    
     render() {
         return (
-            <div>
+            <div style={{height: "100%"}}>
 
             <header id="header">
                 <h1>My Rito</h1>
@@ -29,10 +30,11 @@ class homePage extends Component {
                         trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</li>
                 </ul>
             </footer>
+            
         </div>
             
         );
     }
 }
 
-export default homePage;
+export default HomePage;
