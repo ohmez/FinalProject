@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileInfo = (props) => {
+const RankedInfo = (props) => {
    
   return (
     <section id="one">
@@ -55,4 +55,4 @@ const ProfileInfo = (props) => {
   );
 };
 
-export default ProfileInfo;
+export default RankedInfo;
