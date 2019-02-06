@@ -7,7 +7,7 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 function App(){
     return (
       <Router>
-      <div>
+      
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/profile/:name" component={ProfilePage} />
@@ -15,8 +15,7 @@ function App(){
           <Route exact path="/books/:id" component={Detail} /> */}
           <Route component={NoMatch} />
         </Switch>
-        <script src="assets/js/home-main.js"></script>
-      </div>
+      
     </Router>
     );
 }
