@@ -93,7 +93,7 @@ module.exports = {
                         total += parseInt(out);
                     }
                     sum.masters = { avg: (total / masterWr.length) }
-                    getMatches();
+                    getMasteries();
                 }
                 else if (response.statusCode === 429) {
                     setTimeout(function(){getMasters()},response.Retry-After);
@@ -105,37 +105,6 @@ module.exports = {
                 }
             });
         }; // masters triggers match history list.
-        function getMatches() {
-            request('https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/' + sum.accountId + '?api_key=' + key, (err, response, body) => {
-                if (!err && response.statusCode === 200) {
-                    body = JSON.parse(body); //body keys = matches, startIndex, endIndex, totalGames
-                    var matches = body.matches;
-                    sum.matches = {};
-                    sum.matches.first5 = [];
-                    // here we loop through all the matches to add the champions name to the object and save it as a key of the match object. 
-                    for (x = 0; x < matches.length; x++) {
-                        for (var prop in champions) {
-                            if (Number(champions[prop].key) === matches[x].champion) {
-                                matches[x].championName = champions[prop].id;
-                            }
-                        }
-                        if (x < 5) {
-                            sum.matches.first5.push(matches[x]);
-                        }
-                    }
-                    sum.matches.last100 = matches;
-                    getMasteries();
-                }
-                else if (response.statusCode === 429) {
-                    setTimeout(function(){getMatches()},response.Retry-After);
-                }
-                else {
-                    sum.errMsg = "Something went wrong retrieving your match history information";
-                    res.json(sum);
-                    console.log(response.body);
-                }
-            });
-        }; // matches triggers masteries
         function getMasteries() {
             request('https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/' + sum.id + '?api_key=' + key, (err, response, body) => {
                 if (err) throw err;
@@ -160,9 +129,8 @@ module.exports = {
                     }
                     sum.masteries = { all: edited };
                     sum.masteries.top3 = top3;
-                    sum.matches.first5.forEach((match, index) => {
-                        getMatchData(parseInt(match.gameId),sum.id, index, sum.matches.first5.length);
-                    });
+                    getMatches();
+                    
                 }
                 else if (response.statusCode === 429) {
                     setTimeout(function(){getMasteries()},response.Retry-After);
@@ -175,6 +143,39 @@ module.exports = {
             });
            
         };
+        function getMatches() {
+            request('https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/' + sum.accountId + '?api_key=' + key, (err, response, body) => {
+                if (!err && response.statusCode === 200) {
+                    body = JSON.parse(body); //body keys = matches, startIndex, endIndex, totalGames
+                    var matches = body.matches;
+                    sum.matches = {};
+                    sum.matches.first5 = [];
+                    // here we loop through all the matches to add the champions name to the object and save it as a key of the match object. 
+                    for (x = 0; x < matches.length; x++) {
+                        for (var prop in champions) {
+                            if (Number(champions[prop].key) === matches[x].champion) {
+                                matches[x].championName = champions[prop].id;
+                            }
+                        }
+                        if (x < 5) {
+                            sum.matches.first5.push(matches[x]);
+                        }
+                    }
+                    sum.matches.last100 = matches;
+                    sum.matches.first5.forEach((match, index) => {
+                        getMatchData(parseInt(match.gameId),sum.id, index, sum.matches.first5.length);
+                    });
+                }
+                else if (response.statusCode === 429) {
+                    setTimeout(function(){getMatches()},response.Retry-After);
+                }
+                else {
+                    sum.errMsg = "Something went wrong retrieving your match history information";
+                    res.json(sum);
+                    console.log(response.body);
+                }
+            });
+        }; // matches triggers masteries
         function getMatchData(matchNum,sumId,index, max) {
             request('https://na1.api.riotgames.com/lol/match/v4/matches/' + matchNum + '?api_key=' + key, (err, response, body) => {
                 if (!err && response.statusCode === 200) {

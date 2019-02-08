@@ -22,6 +22,9 @@ const MasteryInfo = (props) => {
                             <p>{masteries.championPoints}</p>
                         </div>
                     ))}
+                      <ul class="actions special">
+                          <li className="align-center"><input type="button" className="primary" value="View More Masteries" onClick={props.moreMasteries} /></li>
+                        </ul>
                 </div>
             ):""}
         </div>
