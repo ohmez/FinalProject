@@ -22,7 +22,7 @@ const RankedInfo = (props) => {
                         <p>Win Ratio: {props.summoner.flex5.wr}</p>
                     </span>
                 </div> 
-            ):""}
+            ):<div className="col-4"> <p>{props.summoner.name} Has No Flex 5v5 Ranked Stats</p></div>}
             {props.summoner.solo ? (
                 <div className="col-4">
                     <span className="image fit">
@@ -32,7 +32,7 @@ const RankedInfo = (props) => {
                         <p>Win Ratio: {props.summoner.solo.wr}</p>
                     </span>
                 </div>
-            ):""}
+            ):<div className="col-4"> <p>{props.summoner.name} Has No Solo/Duo Ranked Stats</p></div>}
             {props.summoner.flex3 ? (
                 <div className="col-4">
                     <span className="image fit">
@@ -42,7 +42,7 @@ const RankedInfo = (props) => {
                         <p>Win Ratio: {props.summoner.flex3.wr}</p>
                     </span>
                 </div>
-            ):""}
+            ):<div className="col-4"> <p>{props.summoner.name} Has No Flex 3v3 Ranked Stats</p></div>}
         </div>
         </div>
         {props.summoner.errMsg ? (

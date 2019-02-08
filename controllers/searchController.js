@@ -41,6 +41,14 @@ module.exports = {
                     sum.title = '' +sum.name + '\'s rito';
                     getRanked();
                 }
+                else if (response.statusCode === 404) {
+                    sum.errMsg = "There is no summoner by that name";
+                    res.json(sum);
+                    console.log(response.body);
+                }
+                else if (response.statusCode === 429) {
+                    setTimeout(function(){getSummoner()},response.Retry-After);
+                }
                 else {
                     sum.errMsg = "Something went wrong retrieving your summoner account information";
                     res.json(sum);
@@ -60,6 +68,9 @@ module.exports = {
                     a[x].queueType === 'RANKED_FLEX_TT' ? sum.flex3 = a[x] : a[x];
                 }
                 getMasters();
+            }
+            else if (response.statusCode === 429) {
+                setTimeout(function(){getRanked()},response.Retry-After);
             }
             else {
                 sum.errMsg = "Something went wrong retrieving your ranked information";
@@ -83,6 +94,9 @@ module.exports = {
                     }
                     sum.masters = { avg: (total / masterWr.length) }
                     getMatches();
+                }
+                else if (response.statusCode === 429) {
+                    setTimeout(function(){getMasters()},response.Retry-After);
                 }
                 else {
                     sum.errMsg = "Something went wrong retrieving masters information";
@@ -111,6 +125,9 @@ module.exports = {
                     }
                     sum.matches.last100 = matches;
                     getMasteries();
+                }
+                else if (response.statusCode === 429) {
+                    setTimeout(function(){getMatches()},response.Retry-After);
                 }
                 else {
                     sum.errMsg = "Something went wrong retrieving your match history information";
@@ -146,7 +163,11 @@ module.exports = {
                     sum.matches.first5.forEach((match, index) => {
                         getMatchData(parseInt(match.gameId),sum.id, index, sum.matches.first5.length);
                     });
-                } else {
+                }
+                else if (response.statusCode === 429) {
+                    setTimeout(function(){getMasteries()},response.Retry-After);
+                }
+                 else {
                     sum.errMsg = 'Something went wrong retrieving your champion masteries';
                     res.json(sum);
                     console.log(response.body);
@@ -210,6 +231,9 @@ module.exports = {
                             })
                         },1000);
                     }
+                }
+                else if (response.statusCode === 429) {
+                    setTimeout(function(){getMatchData(matchNum,sumId,index, max)},response.Retry-After);
                 }
                 else {
                     sum.errMsg = 'Something went wrong retrieving your match specific data';

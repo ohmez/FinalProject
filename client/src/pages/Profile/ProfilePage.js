@@ -26,7 +26,11 @@ class ProfilePage extends Component {
         API.findSummoner(sumName)
         .then(res => {
             if(res.data) {
-                this.setState({summoner: res.data});
+                console.log(res.data);
+                if(res.data.errMsg) this.setState({error: res.data.errMsg})
+                else {
+                    this.setState({summoner: res.data});
+                }
             } else {
                res.redirect("/");
             }
@@ -34,6 +38,7 @@ class ProfilePage extends Component {
     };
 
     render() {
+        if(this.state.error) return( <div><h1>{this.state.error}</h1><a href="/">try another name</a></div>)
         return (
             <div style={{height: "100%"}}>
                 {this.state.summoner?(
