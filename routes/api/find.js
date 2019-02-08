@@ -3,7 +3,7 @@ const searchController = require("../../controllers/searchController");
 
 // Matches with "/api/summoner/:name"
 router.route("/:name")
-  .get(searchController.findNew);
+  .get(searchController.findOrAdd);
 //   .post(searchController.addNew);
 
 // // Matches with "/api/books/:id"

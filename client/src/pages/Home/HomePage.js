@@ -18,7 +18,7 @@ class HomePage extends Component {
                 <p>Welcome Summoner</p>
             </header>
 
-            <form id="signup-form" method="POST" action="/api/search">
+            <form id="signup-form" method="POST" action="api/summoner">
                 <input type="text" name="summonerName" id="summonerName" placeholder="Enter Summoner Name" />
                 <input type="submit" value="Find My Rito"/>
             </form>

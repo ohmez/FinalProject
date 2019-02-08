@@ -21,11 +21,15 @@ class ProfilePage extends Component {
         }
     };
     
-    summonerPop = (name) => {
-        API.getSummoner(name)
+    summonerPop = () => {
+        var sumName = this.props.match.params.name;
+        API.findSummoner(sumName)
         .then(res => {
-            let sum = JSON.parse(res.data.json);
-            this.setState({summoner: sum})
+            if(res.data) {
+                this.setState({summoner: res.data});
+            } else {
+               res.redirect("/");
+            }
         })
     };
 
