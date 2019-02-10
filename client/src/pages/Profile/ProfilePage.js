@@ -5,6 +5,7 @@ import RankedInfo from "../../components/RankedInfo";
 import MasteryInfo from "../../components/MasteryInfo";
 import MatchInfo from "../../components/MatchInfo";
 import Footer from "../../components/Footer";
+import MoreMastery from "../../components/MoreMastery";
 class ProfilePage extends Component {
     state = {
     };
@@ -36,6 +37,12 @@ class ProfilePage extends Component {
             }
         })
     };
+    
+    moreMasteries = event => {
+        console.log('more masteries triggered');
+        console.log(event.target);
+        this.state.moreMastery? this.setState({moreMastery: false}) : this.setState({moreMastery: true});
+    };
 
     render() {
         if(this.state.error) return( <div><h1>{this.state.error}</h1><a href="/">try another name</a></div>)
@@ -50,7 +57,17 @@ class ProfilePage extends Component {
                 <div id="main">
                     <RankedInfo summoner={this.state.summoner} />
                     <MasteryInfo masteries={this.state.summoner.masteries} />
-                    <MatchInfo name={this.state.summoner.name} revisionDate={this.state.summoner.revisionDate} updated={this.state.summoner.updated} matches={this.state.summoner.matches} />
+                    {this.state.moreMastery?(
+                    <MoreMastery 
+                    masteries={this.state.summoner.masteries} 
+                    moreMasteries={() =>this.moreMasteries}
+                    />):""}
+                    <MatchInfo 
+                    name={this.state.summoner.name} 
+                    revisionDate={this.state.summoner.revisionDate} 
+                    updated={this.state.summoner.updated} 
+                    matches={this.state.summoner.matches} 
+                    />
                     <Footer />
                 </div>
                     ):""}

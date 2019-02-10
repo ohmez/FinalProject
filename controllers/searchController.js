@@ -20,10 +20,10 @@ module.exports = {
             } else {
                 // if found
                 var returnSum = JSON.parse(found.dataValues.json)
-                var now = new Date();
-                var last = new Date(returnSum.updated);
+                var now = Date.now();
+                var last = returnSum.updated;
                 // if hasn't been updated in last 10 minutes run API chain else populate from database
-                now.getTime() > (last.getTime()+600000)?getSummoner():res.json(returnSum);
+                now > (last+600000)?getSummoner():res.json(returnSum);
             }
         })
         //First function to start the API chain to get all of the summoners information for their profile
@@ -36,7 +36,7 @@ module.exports = {
                     var d = new Date(0);
                     d.setUTCMilliseconds(utcSeconds);
                     sum.revisionDate = d;
-                    sum.updated = new Date();
+                    sum.updated = Date.now();
                     sum.name = sum.name.trim();
                     sum.title = '' +sum.name + '\'s rito';
                     getRanked();

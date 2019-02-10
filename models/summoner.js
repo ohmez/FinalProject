@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.STRING
     },
-    updated: DataTypes.DATE,
+    updated: DataTypes.STRING,
     accountId: DataTypes.STRING
   }, {});
   
