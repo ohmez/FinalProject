@@ -8,22 +8,22 @@ const MasteryInfo = (props) => {
         <h3>Highest Mastery Champions</h3>
         <br />
             {props.masteries.top3? (
-                <div class="row">
+                <div className="row">
                     {props.masteries.top3.map((masteries)=> (
-                        <div class="top3champions col-4">
-                            <div class="champion-mastery">
-                                <img class="mastery-image" src={"http://ddragon.leagueoflegends.com/cdn/8.24.1/img/champion/"+masteries.championName+".png"} alt="" />
-                                <div class="mastery-image-layers">
-                                    <img class="mastery-level" src={"/images/mastery-frame-"+masteries.championLevel+".png"} alt="" />
-                                    <img class="chest-found" src="/images/border-chest.png" alt="" />
+                        <div className="top3champions col-4">
+                            <div className="champion-mastery">
+                                <img className="mastery-image" src={"http://ddragon.leagueoflegends.com/cdn/9.3.1/img/champion/"+masteries.championName+".png"} alt="" />
+                                <div className="mastery-image-layers">
+                                    <img className="mastery-level" src={"/images/mastery-frame-"+masteries.championLevel+".png"} alt="" />
+                                    {masteries.chestGranted? (<img className="chest-found" src="/images/border-chest.png" alt="" />): ""}
                                 </div>
                             </div>
                             <br /><br />
                             <p>{masteries.championPoints}</p>
                         </div>
                     ))}
-                      <ul class="actions special">
-                          <li className="align-center"><input type="button" className="primary" value="View More Masteries" onClick={props.moreMasteries} /></li>
+                      <ul className="actions special">
+                          <li className="align-center"><input type="button" className="primary" value={props.more?"View Less Masteries":"View More Masteries"} onClick={props.moreMasteries} /></li>
                         </ul>
                 </div>
             ):""}

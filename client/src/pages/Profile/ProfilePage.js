@@ -6,8 +6,10 @@ import MasteryInfo from "../../components/MasteryInfo";
 import MatchInfo from "../../components/MatchInfo";
 import Footer from "../../components/Footer";
 import MoreMastery from "../../components/MoreMastery";
+
 class ProfilePage extends Component {
     state = {
+        moreMastery: false,
     };
     
     componentDidMount(){
@@ -38,9 +40,8 @@ class ProfilePage extends Component {
         })
     };
     
-    moreMasteries = event => {
+    moreMasteries = () => {
         console.log('more masteries triggered');
-        console.log(event.target);
         this.state.moreMastery? this.setState({moreMastery: false}) : this.setState({moreMastery: true});
     };
 
@@ -56,11 +57,14 @@ class ProfilePage extends Component {
                 {this.state.summoner?(
                 <div id="main">
                     <RankedInfo summoner={this.state.summoner} />
-                    <MasteryInfo masteries={this.state.summoner.masteries} />
+                    <MasteryInfo 
+                    masteries={this.state.summoner.masteries}
+                    more={this.state.moreMastery}
+                    moreMasteries={this.moreMasteries} />
                     {this.state.moreMastery?(
                     <MoreMastery 
                     masteries={this.state.summoner.masteries} 
-                    moreMasteries={() =>this.moreMasteries}
+                    moreMasteries={this.moreMasteries}
                     />):""}
                     <MatchInfo 
                     name={this.state.summoner.name} 

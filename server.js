@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(routes);
 
 //Connect to the database
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

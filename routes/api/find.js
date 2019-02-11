@@ -1,16 +1,8 @@
 const router = require("express").Router();
 const searchController = require("../../controllers/searchController");
 
-// Matches with "/api/summoner/:name"
+// Matches with "/api/find/:name"
 router.route("/:name")
   .get(searchController.findOrAdd);
-//   .post(searchController.addNew);
-
-// // Matches with "/api/books/:id"
-// router
-//   .route("/:id")
-//   .get(searchController.findById)
-//   .put(searchController.update)
-//   .delete(searchController.remove);
 
 module.exports = router;

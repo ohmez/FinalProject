@@ -5,7 +5,7 @@ function NavBar (props) {
     return (
         <section id="header">
         <header>
-            <span className="image avatar"><img src={"http://ddragon.leagueoflegends.com/cdn/8.24.1/img/profileicon/"+sum.profileIconId+".png"} alt="" /></span>
+            <span className="image avatar"><img src={"http://ddragon.leagueoflegends.com/cdn/9.3.1/img/profileicon/"+sum.profileIconId+".png"} alt="" /></span>
             <h1 id="logo">{sum.name}</h1>
             <p>Level: {sum.summonerLevel}</p>
         </header>
