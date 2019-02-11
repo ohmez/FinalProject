@@ -29,7 +29,6 @@ class ProfilePage extends Component {
         API.findSummoner(sumName)
         .then(res => {
             if(res.data) {
-                console.log(res.data);
                 if(res.data.errMsg) this.setState({error: res.data.errMsg})
                 else {
                     this.setState({summoner: res.data});
@@ -41,7 +40,6 @@ class ProfilePage extends Component {
     };
     
     moreMasteries = () => {
-        console.log('more masteries triggered');
         this.state.moreMastery? this.setState({moreMastery: false}) : this.setState({moreMastery: true});
     };
 

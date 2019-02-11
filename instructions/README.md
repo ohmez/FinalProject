@@ -10,7 +10,7 @@
 
 * Must be deployed using Heroku (with Data) --*check
 
-* Must utilize at least two libraries, packages, or technologies that we haven’t discussed  --package1:HTML5Up, 
+* Must utilize at least two libraries, packages, or technologies that we haven’t discussed  --package1:HTML5Up, request, environmental variables inside heroku, 
 
 * Must have a polished frontend / UI --*check
 
