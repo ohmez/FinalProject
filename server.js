@@ -6,12 +6,20 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
 const keys = require("./keys");
+const session = require("express-session");
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.use(session({
+  secret: 'Doctor Who',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {}
+}));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -19,7 +27,7 @@ app.use(express.json());
 app.use(routes);
 
 //Connect to the database
-var syncOptions = { force: false };
+var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

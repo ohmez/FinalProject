@@ -13,7 +13,7 @@ class ProfilePage extends Component {
     };
     
     componentDidMount(){
-        this.summonerPop('ohme');
+        this.summonerPop();
         require("./assets/css/profile-main.css");
         const scripts = ["/assets/js/jquery.scrollex.min.js","/assets/js/jquery.scrolly.min.js","/assets/js/browser.min.js","/assets/js/breakpoints.min.js","/assets/js/util.js","/assets/js/profile-main.js"];
         for( let x=0; x < scripts.length; x++) {

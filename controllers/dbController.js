@@ -16,5 +16,19 @@ module.exports = {
             updated: req.body.updated})
         .then(newSummoner => res.json(newSummoner))
         .catch((err) => res.status(422).json(err));
+    },
+    login: function (req,res) {
+        console.log(req.body);
+        db.User.findOne({where: {name: req.body.name}})
+        .then(authUser => {res.json(authUser)})
+        .catch((err) => res.status(422).json(err));
+    },
+    signUp: function(req,res) {
+        db.User.create({
+            name: req.body.name,
+            email: req.body.email
+        })
+        .then(newUser => res.json(newUser))
+        .catch(err => res.status(422).json(err));
     }
 };

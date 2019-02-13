@@ -1,13 +1,39 @@
 import React, { Component } from "react";
+import Login from "../../components/Login";
+import Axios from "axios";
 
 class HomePage extends Component {
+    state = {};
     componentDidMount () {
         require("./assets/css/home-main.css");
         const script = document.createElement("script");
         script.src = "assets/js/home-main.js";
         script.async = true;
         document.body.appendChild(script);
-    }
+    };
+    handleLogin = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const postData = {name: data.get("name"), email: data.get("email")};
+        Axios.post("/api/login", postData)
+        .then(loggedUser => {
+            if(loggedUser.data) {
+                console.log(loggedUser.data);
+                this.setState({logged: true});
+            } else {
+                Axios.post("/api/login/new", postData)
+                .then(newUser => {
+                    if(newUser) {
+                        console.log(newUser);
+                        this.setState({logged: true});
+                    } else {
+                        this.setState({error: "somethings wrong"});
+                    }
+                })
+            }
+        })
+        .catch(err => this.setState({error: "login incorrect try again"}));
+    };
     
     render() {
         return (
@@ -16,12 +42,17 @@ class HomePage extends Component {
             <header id="header">
                 <h1>My Rito</h1>
                 <p>Welcome Summoner</p>
+                {this.state.error? (<p>{this.state.error}</p>):""}
             </header>
 
             <form id="signup-form" method="POST" action="api/summoner">
                 <input type="text" name="summonerName" id="summonerName" placeholder="Enter Summoner Name" />
                 <input type="submit" value="Find My Rito"/>
             </form>
+            {this.state.logged?"": (
+                <Login handleLogin={this.handleLogin} /> 
+            )}
+            
 
             <footer id="footer">
                 <ul className="icons">
