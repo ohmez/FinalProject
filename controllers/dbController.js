@@ -18,17 +18,30 @@ module.exports = {
         .catch((err) => res.status(422).json(err));
     },
     login: function (req,res) {
-        console.log(req.body);
+        console.log(req.session);
         db.User.findOne({where: {name: req.body.name}})
-        .then(authUser => {res.json(authUser)})
-        .catch((err) => res.status(422).json(err));
-    },
-    signUp: function(req,res) {
-        db.User.create({
-            name: req.body.name,
-            email: req.body.email
+        .then(authUser => {
+            if(authUser) {
+                if(authUser.email === req.body.email) {
+                    req.session.user_Id = authUser.id;
+                    req.session.cookie.MaxAge = 60000;
+                    console.log(req.session);
+                    res.json(authUser);
+                } else {
+                    res.json(authUser);
+                }
+            } else {
+                db.User.create({
+                    name: req.body.name,
+                    email: req.body.email
+                })
+                .then(newUser => {
+                    req.session.user_Id = newUser.id;
+                    req.session.cookie.MaxAge = 60000;
+                    res.json(newUser)})
+                .catch(err => res.status(422).json(err));
+            }
         })
-        .then(newUser => res.json(newUser))
-        .catch(err => res.status(422).json(err));
+        .catch((err) => res.status(422).json(err));
     }
 };

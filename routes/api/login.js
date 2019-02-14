@@ -5,7 +5,7 @@ const dbController = require("../../controllers/dbController");
 router.route("/")
   .post(dbController.login);
 
-router.route("/new")
-.post(dbController.signUp);
+// router.route("/new")
+// .post(dbController.signUp);
 
 module.exports = router;

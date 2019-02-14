@@ -19,18 +19,8 @@ class HomePage extends Component {
         .then(loggedUser => {
             if(loggedUser.data) {
                 console.log(loggedUser.data);
-                this.setState({logged: true});
-            } else {
-                Axios.post("/api/login/new", postData)
-                .then(newUser => {
-                    if(newUser) {
-                        console.log(newUser);
-                        this.setState({logged: true});
-                    } else {
-                        this.setState({error: "somethings wrong"});
-                    }
-                })
-            }
+                this.setState({welcome: "Welcome back summoner", logged: true})
+            } 
         })
         .catch(err => this.setState({error: "login incorrect try again"}));
     };
@@ -38,10 +28,10 @@ class HomePage extends Component {
     render() {
         return (
             <div style={{height: "100%"}}>
-
             <header id="header">
                 <h1>My Rito</h1>
                 <p>Welcome Summoner</p>
+                <p>{this.state.welcome}</p>
                 {this.state.error? (<p>{this.state.error}</p>):""}
             </header>
 

@@ -5,7 +5,6 @@ const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
-const keys = require("./keys");
 const session = require("express-session");
 
 
