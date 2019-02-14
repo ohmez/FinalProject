@@ -8,7 +8,7 @@ class HomePage extends Component {
         // require("./assets/css/home-main.css");
         const sheet = document.createElement("link");
         sheet.rel = "stylesheet";
-        sheet.href = "assets/css/home-main.css";
+        sheet.href = "/assets/css/home-main.css";
         sheet.type = "text/css";
         document.head.appendChild(sheet);
         const script = document.createElement("script");

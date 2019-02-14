@@ -15,7 +15,7 @@ class ProfilePage extends Component {
     componentDidMount(){
         const sheet = document.createElement("link");
         sheet.rel = "stylesheet";
-        sheet.href = "assets/css/profile-main.css";
+        sheet.href = "/assets/css/profile-main.css";
         sheet.type = "text/css";
         document.head.appendChild(sheet);
         const scripts = ["/assets/js/jquery.scrollex.min.js","/assets/js/jquery.scrolly.min.js","/assets/js/browser.min.js","/assets/js/breakpoints.min.js","/assets/js/util.js","/assets/js/profile-main.js"];
