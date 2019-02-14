@@ -12,7 +12,7 @@ class HomePage extends Component {
         sheet.type = "text/css";
         document.head.appendChild(sheet);
         const script = document.createElement("script");
-        script.src = "assets/js/home-main.js";
+        script.src = "/assets/js/home-main.js";
         script.async = true;
         document.body.appendChild(script);
     };
