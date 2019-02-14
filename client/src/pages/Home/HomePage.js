@@ -5,7 +5,12 @@ import Axios from "axios";
 class HomePage extends Component {
     state = {};
     componentDidMount () {
-        require("./assets/css/home-main.css");
+        // require("./assets/css/home-main.css");
+        const sheet = document.createElement("link");
+        sheet.rel = "stylesheet";
+        sheet.href = "assets/css/home-main.css";
+        sheet.type = "text/css";
+        document.head.appendChild(sheet);
         const script = document.createElement("script");
         script.src = "assets/js/home-main.js";
         script.async = true;

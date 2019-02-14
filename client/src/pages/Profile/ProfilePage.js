@@ -13,8 +13,11 @@ class ProfilePage extends Component {
     };
     
     componentDidMount(){
-        this.summonerPop();
-        require("./assets/css/profile-main.css");
+        const sheet = document.createElement("link");
+        sheet.rel = "stylesheet";
+        sheet.href = "assets/css/profile-main.css";
+        sheet.type = "text/css";
+        document.head.appendChild(sheet);
         const scripts = ["/assets/js/jquery.scrollex.min.js","/assets/js/jquery.scrolly.min.js","/assets/js/browser.min.js","/assets/js/breakpoints.min.js","/assets/js/util.js","/assets/js/profile-main.js"];
         for( let x=0; x < scripts.length; x++) {
             const script = document.createElement("script");
@@ -22,6 +25,7 @@ class ProfilePage extends Component {
             script.async = true;
             document.body.appendChild(script);
         }
+        this.summonerPop();
     };
     
     summonerPop = () => {

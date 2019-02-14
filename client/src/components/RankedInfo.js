@@ -46,7 +46,7 @@ const RankedInfo = (props) => {
         </div>
         </div>
         {props.summoner.errMsg ? (
-            <h1 style="textAlign:center">{props.summoner.errMsg}</h1>
+            <h1 style={{"textAlign":"center"}}>{props.summoner.errMsg}</h1>
         ):""}
         <h4 style={{"textAlign":"center"}}>Any Win Ratio greater than 1 is a climbing WR.</h4>
         <h4 style={{"textAlign":"center"}}>Currently the average Masters Win Ratio is {props.summoner.masters.avg}</h4>
