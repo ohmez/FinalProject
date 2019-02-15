@@ -7,7 +7,7 @@ We're league enthusiasts with a passion for web development.
 We want to provide our fellow players with quick web/mobile access to their profile.
 Our goal is to provide you with quick access to your summoner information.
 As well as providing usefull insights into statistics and identify opportunities for improving your gameplay.
-
+We're Deployed! [Check Us Out](https://my-react-rito.herokuapp.com/profile/ohme)
 ### Index
 [Developer Section](#Developer-Section)
 
